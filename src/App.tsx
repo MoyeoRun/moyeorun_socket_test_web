@@ -9,10 +9,7 @@ let client: StompJs.Client;
 const App: FC = () => {
   const [url, setUrl] = useState("wss://2825-203-229-46-79.ngrok.io/api/ws");
   const [isConnected, setIsConnected] = useState(false);
-  const [subscribes, setSubscribes] = useState<string[]>([
-    "/topic/chat",
-    "/user/queue/errors",
-  ]);
+  const [subscribes, setSubscribes] = useState<string[]>([]);
   const navigate = useNavigate();
 
   const connect = (url: string, subscribes: string[]) => {

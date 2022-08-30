@@ -81,16 +81,27 @@ const MainPage: FC<Props> = ({
           onChange={(e) => setUrlInput(e.target.value)}
           autoSave=""
         />
-        <Button
-          variant="contained"
-          sx={{ width: "10rem" }}
-          onClick={() => {
-            setUrl(urlInput);
-            setUrlInput("");
-          }}
-        >
-          연결
-        </Button>
+
+        {isConnected ? (
+          <Button
+            variant="contained"
+            onClick={onDisconnect}
+            color="error"
+            sx={{ width: "10rem" }}
+          >
+            연결 끊기
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            sx={{ width: "10rem" }}
+            onClick={() => {
+              setUrl(urlInput);
+            }}
+          >
+            연결
+          </Button>
+        )}
       </Box>
 
       <Item>
@@ -149,14 +160,6 @@ const MainPage: FC<Props> = ({
           발행 테스트
         </Button>
       </Item>
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={onDisconnect}
-        color="error"
-      >
-        연결 끊기
-      </Button>
     </MainLayout>
   );
 };
